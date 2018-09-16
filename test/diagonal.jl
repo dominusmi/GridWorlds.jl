@@ -3,7 +3,9 @@ using GridWorlds
 using POMDPModelTools
 
 let
-	problem = DiagonalGridWorld()
+	problem = GridWorld{DiagonalGWState}()
+
+	@test typeof(problem) == GridWorld{DiagonalGWState}
 
 	@test n_states(problem) == 100
 	@test n_actions(problem) == 8
