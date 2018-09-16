@@ -13,8 +13,13 @@ import POMDPs: initialstate, initialstate_distribution
 import POMDPs: reward
 import POMDPs: convert_a
 
+
 const Vec2 = SVector{2,Int}
-const StateTypes = Vec2
+const StateType = Vec2
+
+abstract type AbstractGWState end
+abstract type SimpleGWState <: AbstractGWState end
+abstract type DiagonalGWState <: AbstractGWState end
 
 # TODO: action/state-action reward
 # abstract type Reward end
@@ -22,7 +27,7 @@ const StateTypes = Vec2
 # abstract type StateActionReward <: Reward end
 # TODO: parametrised StateTypes?
 
-abstract type GridWorld <: MDP{StateTypes, Symbol} end
+abstract type AbstractGridWorld <: MDP{AbstractGWState, Union{Symbol,Integer} } end
 
 include("General.jl")
 include("SimpleGridWorld.jl")
@@ -30,10 +35,11 @@ include("DiagonalGridWorld.jl")
 
 export
     Vec2,
-    GridWorld,
-    SimpleGridWorld,
-    DiagonalGridWorld
-
+	AbstractGWState,
+	SimpleGWState,
+	DiagonalGWState,
+	AbstractGridWorld,
+	GridWorld
 
 export
     actions,
@@ -44,6 +50,8 @@ export
     stateindex,
     transition,
     reward,
-    isterminal
+    isterminal,
+	state_type,
+	directions
 
 end
