@@ -52,6 +52,7 @@ export
     reward,
     isterminal,
 	state_type,
-	directions
+	directions,
+	discount
 
 end
