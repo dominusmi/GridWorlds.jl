@@ -1,7 +1,7 @@
 # GridWorlds.jl
 
 This package provides a way to customise GridWorlds-like MDPs. It is based on the [POMDPs.jl](https://github.com/JuliaPOMDP/POMDPs.jl) generic MDP framework.
-Currently, solvers are not available, since they're in the process of being upgraded to `Julia 0.7`.
+Currently, solvers are not available, since they're in the process of being upgraded to `Julia 0.7`. Simple value iteration implemented in [this Gist](https://gist.github.com/dominusmi/dff15ac1c3d211ae250ac0a5d73e0c3c) meanwhile.
 
 ## Simple Usage
 
