@@ -40,5 +40,6 @@ end
 ## TODO
 - Allow for both state-action and state reward (only the latter currently implemented)
 - Generate macros for customised action and their movement
+- Add "Wall" state, which should give a zero transition probability when trying to be reached
 
 ### Collaborators are highly welcome!
