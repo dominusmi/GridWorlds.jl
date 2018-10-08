@@ -14,7 +14,7 @@ end
 GridWorld(args...) = GridWorld{SimpleGWState}(args...)
 
 function POMDPs.states(mdp::GridWorld)
-    vec([Vec2(x, y) for x in 1:mdp.size[1], y in mdp.size[2]])
+    vec([Vec2(x, y) for x in 1:mdp.size[1], y in 1:mdp.size[2]])
 end
 
 
@@ -26,7 +26,7 @@ POMDPs.reward(mdp::GridWorld, s::Vec2, a::Symbol) = get(mdp.rewards, s, 0.0)
 POMDPs.initialstate_distribution(mdp::GridWorld) = uniform_belief(mdp)
 POMDPs.initialstate(mdp::GridWorld, rng::AbstractRNG) = StateType(rand(rng, 1:mdp.size[1]), rand(rng, 1:mdp.size[2]))
 POMDPs.isterminal(mdp::GridWorld, s::Vec2) = s ∈ mdp.terminate_in
-inbounds(mdp::GridWorld, nb::Vec2) = ( 0 < nb[1] < mdp.size[1] ) && ( 0 < nb[2] < mdp.size[2] )
+inbounds(mdp::GridWorld, nb::Vec2) = ( 0 < nb[1] <= mdp.size[1] ) && ( 0 < nb[2] <= mdp.size[2] )
 
 POMDPs.convert_a(::Type{A}, a::Symbol, mdp::GridWorld) where A<:AbstractArray = convert(A, SVector(actionindex(mdp)[a]))
 POMDPs.convert_a(::Type{Symbol}, a::AbstractArray, mdp::GridWorld) = actions(mdp)[first(a)]
